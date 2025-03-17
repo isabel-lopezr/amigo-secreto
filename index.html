@@ -68,7 +68,7 @@
             }
 
             let amigosSorteados = [...amigos];
-            amigosSorteados = amigosSorteados.sort(() => Math.random() - 0.5); // Mezclar aleatoriamente
+            amigosSorteados = amigosSorteados.sort(() => Math.random() - 0.5);
             const resultado = document.getElementById("resultado");
             resultado.innerHTML = "";
 
@@ -78,7 +78,7 @@
                 resultado.appendChild(li);
             });
 
-            document.querySelector(".button-draw").disabled = true;  // Desactivar el botón para evitar múltiples sorteos
+            document.querySelector(".button-draw").disabled = true;
         }
     </script>
 </body>
