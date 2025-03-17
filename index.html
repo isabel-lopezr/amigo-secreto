@@ -36,6 +36,50 @@
         </section>
     </main>
 
-    <script src="app.js" defer></script>
+    <script>
+        let amigos = [];
+        function agregarAmigo() {
+            const input = document.getElementById("amigo");
+            const nombre = input.value.trim();
+            if (nombre && !amigos.includes(nombre)) {
+                amigos.push(nombre);
+                mostrarLista();
+                input.value = "";  // Limpiar el campo de texto
+            } else {
+                alert("Por favor, ingresa un nombre único.");
+            }
+        }
+
+        function mostrarLista() {
+            const listaAmigos = document.getElementById("listaAmigos");
+            listaAmigos.innerHTML = "";  // Limpiar la lista antes de mostrarla
+            
+            amigos.forEach((amigo) => {
+                const li = document.createElement("li");
+                li.textContent = amigo;
+                listaAmigos.appendChild(li);
+            });
+        }
+
+        function sortearAmigo() {
+            if (amigos.length < 2) {
+                alert("¡Necesitas al menos dos personas para sortear!");
+                return;
+            }
+
+            let amigosSorteados = [...amigos];
+            amigosSorteados = amigosSorteados.sort(() => Math.random() - 0.5); // Mezclar aleatoriamente
+            const resultado = document.getElementById("resultado");
+            resultado.innerHTML = "";
+
+            amigos.forEach((amigo, index) => {
+                const li = document.createElement("li");
+                li.textContent = `${amigo} -> ${amigosSorteados[index]}`;
+                resultado.appendChild(li);
+            });
+
+            document.querySelector(".button-draw").disabled = true;  // Desactivar el botón para evitar múltiples sorteos
+        }
+    </script>
 </body>
 </html>
